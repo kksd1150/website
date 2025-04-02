@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แดชบอร์ด HR</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>แดชบอร์ด HR</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('hr_dashboard') }}">หน้าหลัก</a></li>
+                <li><a href="{{ url_for('apply_leave') }}">ยื่นคำร้องลา</a></li>
+                <li><a href="{{ url_for('leave_balance') }}">ยอดคงเหลือวันลา</a></li>
+                {% if user.is_manager %}
+                <li><a href="{{ url_for('manager_dashboard') }}">จัดการคำร้องลา</a></li>
+                {% endif %}
+                <li><a href="{{ url_for('logout') }}">ออกจากระบบ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>ยินดีต้อนรับ, {{ user.username }}</h2>
+        <p>ยอดคงเหลือวันลา: {{ user.leave_balance }} วัน</p>
+        <h3>ประวัติคำร้องลา</h3>
+        {% if leave_requests %}
+            <table border="1" cellpadding="5">
+                <tr>
+                    <th>วันที่เริ่ม</th>
+                    <th>วันที่สิ้นสุด</th>
+                    <th>เหตุผล</th>
+                    <th>สถานะ</th>
+                    <th>วันที่ยื่น</th>
+                    <th>รายละเอียด</th>
+                </tr>
+                {% for leave in leave_requests %}
+                <tr>
+                    <td>{{ leave.start_date }}</td>
+                    <td>{{ leave.end_date }}</td>
+                    <td>{{ leave.reason }}</td>
+                    <td>{{ leave.status }}</td>
+                    <td>{{ leave.applied_on.strftime('%Y-%m-%d') }}</td>
+                    <td><a href="{{ url_for('leave_details', leave_id=leave.id) }}">ดู</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>ยังไม่มีคำร้องลา</p>
+        {% endif %}
+    </div>
+    <footer>
+        <p>&copy; 2025 ระบบ HR</p>
+    </footer>
+</body>
+</html>
