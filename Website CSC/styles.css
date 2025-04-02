@@ -1,0 +1,24 @@
+/* แถบขาวด้านบน */
+.top-bar {
+  background-color: #fff;       /* พื้นหลังขาว */
+  border-bottom: 1px solid #ccc; /* เส้นแบ่งด้านล่างบาง ๆ */
+  padding: 0.5rem 0;            /* ระยะห่างแนวตั้ง */
+}
+
+.top-bar-logo {
+  height: 40px;                 /* กำหนดความสูงของโลโก้ */
+}
+
+/* ข้อความบนแถบขาว */
+.top-bar-text {
+  font-size: 1rem;
+  color: #000;
+}
+
+/* แถบน้ำเงินเข้มด้านล่าง */
+.nav-bar {
+  background-color: #002D74;    /* สีน้ำเงินเข้ม (โทน UOB) */
+  height: 40px;                 /* ความสูงประมาณ 40px (ปรับได้ตามชอบ) */
+  display: flex;
+  align-items: center;          /* จัดให้อยู่กลางแนวตั้ง */
+}

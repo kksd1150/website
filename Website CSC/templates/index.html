@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Services - IT Support Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Google Fonts (Prompt) -->
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      font-family: 'Prompt', sans-serif;
+      background-color: #1B3A5B;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+    a { text-decoration: none; }
+    h1, h2, h3 { font-weight: 700; }
+
+    /* Header */
+    header {
+      background-color: #003366;
+      padding: 0.3rem 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-logo img { height: 40px; }
+    .header-menus {
+      display: flex;
+      align-items: center;
+    }
+    .header-menus a {
+      color: #fff;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .header-menus a:hover { color: #FFD700; }
+
+    /* Dropdown Styles – กรอบสีขาว */
+    .dropdown-menu {
+      background-color: #fff !important;
+      border: 1px solid #fff !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+      min-width: 140px;
+    }
+    .dropdown-header {
+      color: #333;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .dropdown-item.dropdown-item-custom {
+      color: #000 !important;
+      font-size: 0.85rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: transparent;
+    }
+    /* เมื่อชี้เมาส์ dropdown item ให้พื้นหลังเป็นสีใส */
+    .dropdown-item.dropdown-item-custom:hover {
+      color: #FFD700 !important;
+      background-color: transparent !important;
+    }
+    .nav-link.dropdown-toggle {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+    .nav-link.dropdown-toggle:focus,
+    .nav-link.dropdown-toggle:active {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Responsive Header */
+    @media (max-width: 767px) {
+      .header-container { flex-direction: column; align-items: center; }
+      .header-menus { margin-top: 10px; flex-wrap: wrap; justify-content: center; }
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: url('images/banner.jpg') no-repeat center center;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-content h1 { font-size: 3rem; margin-bottom: 1rem; }
+    .hero-content p { font-size: 1.25rem; margin-bottom: 2rem; }
+    .hero-content .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      transition: transform 0.3s;
+    }
+    .hero-content .btn:hover { transform: scale(1.05); }
+    @media (max-width: 767px) {
+      .hero-content h1 { font-size: 2.5rem; }
+      .hero-content p { font-size: 1rem; }
+    }
+
+    /* Our Services Section */
+    .our-services {
+      background-color: #0E2A3F;
+      color: #fff;
+      padding: 60px 1rem;
+      text-align: center;
+    }
+    .our-services h2 { margin-bottom: 40px; font-weight: 700; }
+    .service-cards .card {
+      background-color: #1F3B52;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-cards .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .service-cards .card img {
+      max-width: 80px;
+      margin: 20px auto 0;
+    }
+    .service-cards .card-body { padding: 1rem; }
+    .service-cards .card-body h5 {
+      margin: 1rem 0 0.5rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .service-cards .card-footer {
+      background: none;
+      border: none;
+      text-align: center;
+      padding-bottom: 20px;
+    }
+    .service-cards .card-footer a {
+      color: #00acee;
+      text-decoration: underline;
+      font-size: 0.85rem;
+    }
+    .service-more-btn {
+      margin-top: 20px;
+      background-color: #FFD700;
+      color: #003366;
+      border: none;
+      border-radius: 25px;
+      padding: 0.5rem 1rem;
+      font-weight: 500;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .service-more-btn:hover {
+      background-color: #e6c200;
+      transform: scale(1.05);
+    }
+
+    /* Customers & Partners Section */
+    .customers-partners {
+      background-color: #fff;
+      padding: 60px 1rem;
+      text-align: center;
+    }
+    .customers-partners h2 {
+      color: #003366;
+      margin-bottom: 30px;
+    }
+    .customer-logos, .partner-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    .customer-logos img,
+    .partner-logos img {
+      max-width: 100px;
+      margin: 10px;
+      transition: transform 0.3s;
+    }
+    .customer-logos img:hover,
+    .partner-logos img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #003366;
+      color: #fff;
+      padding: 20px 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <!-- โลโก้ -->
+      <div class="header-logo">
+        <a href="index.html">
+          <img src="logo/logocsc.png" alt="CSC Logo">
+        </a>
+      </div>
+      <!-- เมนู/ปุ่ม -->
+      <div class="header-menus">
+        <!-- Dropdown "ติดต่อเรา" -->
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="contactDropdown" role="button"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            ติดต่อเรา
+          </a>
+          <div class="dropdown-menu" aria-labelledby="contactDropdown">
+            <h6 class="dropdown-header">ติดต่อเรา</h6>
+            <a class="dropdown-item dropdown-item-custom" href="services.html">ติดต่อซีเอสซี</a>
+          </div>
+        </div>
+        <!-- ปุ่ม "เกี่ยวกับเรา" -->
+        <a href="about.html" class="nav-link text-white">เกี่ยวกับเรา</a>
+        <!-- Dropdown "เข้าสู่ระบบ" -->
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="loginDropdown" role="button"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            เข้าสู่ระบบ
+          </a>
+          <div class="dropdown-menu" aria-labelledby="loginDropdown">
+            <h6 class="dropdown-header">เข้าสู่ระบบ</h6>
+            <hr class="dropdown-divider">
+            <a class="dropdown-item dropdown-item-custom" href="logincsc.html">Employee CSC</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content container">
+      <h1>ยกระดับประสบการณ์ IT ของคุณ</h1>
+      <p>เราคือผู้เชี่ยวชาญด้านการจัดการและบริการ IT Support ที่คุณวางใจได้</p>
+      <a href="#" class="btn btn-primary">รับการสนับสนุนทันที</a>
+    </div>
+  </section>
+
+  <!-- Our Services Section -->
+  <section class="our-services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="row service-cards">
+        <div class="col-md-3">
+          <div class="card">
+            <img src="images/service1.png" class="card-img-top" alt="Service 1">
+            <div class="card-body">
+              <h5 class="card-title">บริการงานด้านระบบไอที (IT services)</h5>
+            </div>
+            <div class="card-footer">
+              <a href="service1.html">อ่านรายละเอียดเพิ่มเติม</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <img src="images/service2.png" class="card-img-top" alt="Service 2">
+            <div class="card-body">
+              <h5 class="card-title">บริการงานด้านระบบเครือข่าย (Network services)</h5>
+            </div>
+            <div class="card-footer">
+              <a href="service2.html">อ่านรายละเอียดเพิ่มเติม</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <img src="images/service3.png" class="card-img-top" alt="Service 3">
+            <div class="card-body">
+              <h5 class="card-title">บริการจัดหาวัสดุครุภัณฑ์ไอที (IT equipment procurement services)</h5>
+            </div>
+            <div class="card-footer">
+              <a href="service3.html">อ่านรายละเอียดเพิ่มเติม</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <img src="images/service4.png" class="card-img-top" alt="Service 4">
+            <div class="card-body">
+              <h5 class="card-title">บริการจัดหาซอฟต์แวร์ลิขสิทธิ์ สำหรับสำนักงาน (License software procurement services)</h5>
+            </div>
+            <div class="card-footer">
+              <a href="service4.html">อ่านรายละเอียดเพิ่มเติม</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="service-more-btn">ดูเพิ่มเติม</button>
+    </div>
+  </section>
+
+  <!-- Customers & Partners Section -->
+  <section class="customers-partners">
+    <div class="container">
+      <h2>Our Partners & Friends</h2>
+      <div class="partner-logos">
+        <img src="images/partner1.png" alt="Partner 1">
+        <img src="images/partner2.png" alt="Partner 2">
+        <img src="images/partner3.png" alt="Partner 3">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Customer Services. สงวนลิขสิทธิ์.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
