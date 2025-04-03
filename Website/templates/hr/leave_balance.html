@@ -1,0 +1,7 @@
+{% extends "hr/base_hr.html" %}
+{% block title %}Leave Balance{% endblock %}
+{% block content %}
+    <h2>Leave Balance</h2>
+    <p>You have {{ user.leave_balance }} days of leave remaining.</p>
+    <a href="{{ url_for('hr.dashboard') }}">Back to Dashboard</a>
+{% endblock %}

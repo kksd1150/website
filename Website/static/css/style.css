@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header, footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+nav a {
+    color: #fff;
+    margin-right: 10px;
+    text-decoration: none;
+}
+main {
+    padding: 20px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid #ccc;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+.alert {
+    color: red;
+}

@@ -1,0 +1,46 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Data Entry{% endblock %}
+{% block content %}
+    <h2>Admin Data Entry</h2>
+    <h3>Add Employee</h3>
+    <form method="post" action="{{ url_for('admin.data_entry') }}">
+        <label>Username:</label>
+        <input type="text" name="username" required>
+        <br>
+        <label>Password:</label>
+        <input type="password" name="password" required>
+        <br>
+        <label>Employee Code:</label>
+        <input type="text" name="employee_code" required>
+        <br>
+        <label>Job Title:</label>
+        <input type="text" name="job_title">
+        <br>
+        <label>Section:</label>
+        <input type="text" name="section">
+        <br>
+        <label>Supervisor:</label>
+        <input type="text" name="supervisor">
+        <br>
+        <button type="submit" name="employee_submit">Add Employee</button>
+    </form>
+    <h3>Add Leave Request</h3>
+    <form method="post" action="{{ url_for('admin.data_entry') }}">
+        <label>Employee ID:</label>
+        <input type="text" name="employee_id" required>
+        <br>
+        <label>Leave Type:</label>
+        <input type="text" name="leave_type" required>
+        <br>
+        <label>Start Date (YYYY-MM-DD):</label>
+        <input type="text" name="start_date" required>
+        <br>
+        <label>End Date (YYYY-MM-DD):</label>
+        <input type="text" name="end_date" required>
+        <br>
+        <label>Reason:</label>
+        <textarea name="reason"></textarea>
+        <br>
+        <button type="submit" name="leave_submit">Add Leave Request</button>
+    </form>
+{% endblock %}
