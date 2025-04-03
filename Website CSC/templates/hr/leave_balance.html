@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ยอดคงเหลือวันลา</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>ยอดคงเหลือวันลา</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('hr_dashboard') }}">กลับไปแดชบอร์ด</a></li>
+                <li><a href="{{ url_for('logout') }}">ออกจากระบบ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>ยอดคงเหลือวันลาของคุณ</h2>
+        <p>คุณมีวันลาคงเหลือ {{ user.leave_balance }} วัน</p>
+    </div>
+    <footer>
+        <p>&copy; 2025 ระบบ HR</p>
+    </footer>
+</body>
+</html>
